@@ -1,0 +1,146 @@
+/* Sidebar shared styles */
+.query-page {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #ff8c00;
+    color: white;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 2rem;
+    font-family: serif;
+    margin-bottom: 50px;
+}
+
+.nav-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    background-color: #f0ad4e; /* The yellow Highlight */
+}
+
+.logout-link {
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.query-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.title-link {
+    color: #2c3e50;
+    text-decoration: underline;
+    font-size: 1.5rem;
+}
+
+.mentor-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.mentor-info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.mentor-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ddd;
+}
+
+.mentor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mentor-details h3 {
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.mentor-details p {
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+.add-new {
+    text-align: center;
+    color: #666;
+    cursor: pointer;
+}
+
+.plus-box {
+    border: 2px solid #888;
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Query Card Styling */
+.query-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.query-card {
+    background-color: #d1d5db; /* Light grey/blue from image */
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid #bdc3c7;
+}
+
+.query-subject, .query-category {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+.query-body {
+    margin-top: 10px;
+    color: #444;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
