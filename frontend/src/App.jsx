@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <TeacherProfile></TeacherProfile>
+      <Dashboard></Dashboard>
     </>
   )
 }
