@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import './SignUp.css';
+import {registerStudent} from "../api/api.js";
+import {useNavigate} from "react-router-dom";
 
-function Signup() {
+
+
+const Signup = () => {
+
+    const navigate = useNavigate();
+
     const [studentData, setStudentData] = useState({
         name: '', registration_no: '', degree: '', branch: '',
         year: '', gender: '', dob: '', linked_in: '', github: ''
@@ -12,24 +19,23 @@ function Signup() {
         setStudentData(prev => ({ ...prev, [name]: value }));
     };
 
+
+
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8080/register-student', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(studentData),
-            });
-            const result = await response.json();
-            if (response.ok) {
-                alert(`Success: ${result.message}`);
-                setStudentData({
-                    name: '', registration_no: '', degree: '', branch: '',
-                    year: '', gender: '', dob: '', linked_in: '', github: ''
-                });
-            } else {
-                alert(`Error: ${result.error || 'Failed to register student.'}`);
+            const response = await registerStudent(studentData);
+            if (response.status === 200 || response.status === 201) {
+                alert(`Success: ${response.data.message}`);
+                sessionStorage.setItem("studentSessionID", studentData.registration_no);
+                navigate('/dashboard');
             }
+            setStudentData({
+                name: '', registration_no: '', degree: '', branch: '',
+                year: '', gender: '', dob: '', linked_in: '', github: ''
+            });
         } catch (error) {
             console.error('Fetch error:', error);
             alert('Network error. Is your backend server running?');
@@ -63,6 +69,7 @@ function Signup() {
                             <option value="M.Tech">M.Tech</option>
                             <option value="BCA">BCA</option>
                             <option value="MCA">MCA</option>
+                            <option value="BBA">BBA</option>
                         </select>
                     </div>
 

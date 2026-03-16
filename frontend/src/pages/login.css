@@ -1,0 +1,198 @@
+/* Main Layout */
+.login-wrapper {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+/* --- LEFT SIDE (Orange Banner) --- */
+.login-banner {
+    flex: 1;
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.banner-content {
+    max-width: 450px;
+    text-align: center;
+}
+
+.brand-logo {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    color: #f97316;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    margin: 0 auto 24px auto;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.banner-title {
+    font-size: 36px;
+    margin: 0 0 16px 0;
+}
+
+.banner-text {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.banner-image {
+    width: 80%;
+    max-width: 350px;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+}
+
+/* --- RIGHT SIDE (White Form Area) --- */
+.login-form-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    /* Added a subtle shadow to make the form pop since there's less content */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    border: 1px solid #f0f0f0;
+}
+
+.greeting {
+    font-size: 28px;
+    color: #1f2937;
+    margin: 0 0 10px 0;
+}
+
+.instruction {
+    color: #6b7280;
+    font-size: 15px;
+    margin-bottom: 35px;
+    line-height: 1.5;
+}
+
+/* Single Input Styling */
+.pure-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.single-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.single-input-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.single-input-group input {
+    padding: 16px;
+    font-size: 18px; /* Made the text larger for emphasis */
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.3s ease;
+    text-align: center; /* Center aligned for ID numbers */
+    letter-spacing: 1px;
+}
+
+.single-input-group input:focus {
+    border-color: #f97316;
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
+}
+
+/* Action Button */
+.action-button {
+    background-color: #f97316;
+    color: white;
+    border: none;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 100%;
+}
+
+.action-button:hover {
+    background-color: #ea580c;
+}
+
+.action-button:active {
+    transform: scale(0.98);
+}
+
+/* Divider & Footer */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.divider span {
+    padding: 0 15px;
+}
+
+.redirect-text {
+    text-align: center;
+    color: #4b5563;
+    font-size: 15px;
+}
+
+.orange-link {
+    color: #f97316;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.orange-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive constraints */
+@media (max-width: 850px) {
+    .login-banner {
+        display: none; /* Hide orange banner on mobile */
+    }
+
+    .login-card {
+        box-shadow: none;
+        border: none;
+        padding: 20px;
+    }
+}

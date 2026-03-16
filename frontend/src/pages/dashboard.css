@@ -271,3 +271,13 @@
     color: #aaa;
     font-style: italic;
 }
+.btn-logout
+{
+    background-color: #ffffff00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}

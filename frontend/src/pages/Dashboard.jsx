@@ -1,4 +1,8 @@
 import "./dashboard.css";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {getStudentData} from "../api/api.js";
+
 
 function Home(props) {
     return null;
@@ -36,8 +40,55 @@ function Bookmark(props) {
     return null;
 }
 
-function Dashboard()
+const Dashboard = () =>
 {
+
+const [Student, setStudent] = useState(null);
+const [loading, setLoading] = useState(true);
+const navigate = useNavigate();
+const [bgred, setBgred] = useState(false);
+
+    useEffect(() => {
+        const sessionID = sessionStorage.getItem("studentSessionID");
+        console.log(`Session ID from dashboard: ${sessionID}`);
+        if (!sessionID) {
+            navigate("/register");
+            return;
+        }
+
+        const loadProfile = async () => {
+            try {
+                const response = await getStudentData(sessionID);
+                if (response.status === 200) {
+                    setStudent(response.data);
+                    console.log(Student);
+                }
+            } catch (error) {
+                console.error('Failed to load dashboard data', error);
+                if(error.response && error.response.status === 404) {
+                    sessionStorage.removeItem("studentSessionID");
+                    navigate("/");
+                }
+            } finally {
+                setLoading(false);
+            }
+
+        }
+
+        loadProfile().then(() => console.log("Dashboard data loaded successfully"));
+
+
+    }, [navigate]);
+
+
+    if (loading) {
+        return <div style={{ padding: "50px", textAlign: "center" }}>Loading Profile...</div>;
+    }
+
+    if (!Student) {
+        return <div style={{ padding: "50px", textAlign: "center" }}>Student not found. Please log in again.</div>;
+    }
+
     return (
         <div className="dashboard-container">
             {/* Sidebar */}
@@ -45,7 +96,7 @@ function Dashboard()
                 <h1 className="logo">MARG</h1>
                 <nav className="nav-menu">
                     <div className="nav-item active">
-                        <Home size={20} /> <span>HOME</span>
+                        <Home size={20} /> <span>Home</span>
                     </div>
                     <div className="nav-item">
                         <FileText size={20} /> <span>Raise a Querry</span>
@@ -56,6 +107,12 @@ function Dashboard()
                     <div className="nav-item">
                         <Users size={20} /> <span>Community</span>
                     </div>
+                    <div className={"nav-item"}>
+                            <button className="btn-logout" onClick={() => {
+                                sessionStorage.removeItem("studentSessionID");
+                                navigate("/");
+                            }}>Logout</button>
+                    </div>
                     <div className="nav-item settings">
                         <Settings size={20} /> <span>Settings</span>
                     </div>
@@ -63,7 +120,7 @@ function Dashboard()
             </aside>
 
             {/* Main Content */}
-            <main className="main-content">
+            <main className="main-content" style={{ backgroundColor: bgred ? "#ffe5e5" : "white" }}>
                 <div className="info-icon">
                     <Info size={24} />
                 </div>
@@ -75,16 +132,16 @@ function Dashboard()
                             <div className="avatar-circle">
                                 <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400" alt="Student" />
                             </div>
-                            <h2>Student Name</h2>
+                            <h2>{Student.name}</h2>
                         </div>
 
                         <div className="profile-right">
                             <div className="profile-header">
                                 <div className="ids">
-                                    <p>registration no.</p>
+                                    <p>{Student.registration_no}</p>
                                     <p>outlook id</p>
                                 </div>
-                                <button className="btn-edit">Edit Profile</button>
+                                <button className="btn-edit" onClick={()=>{ setBgred(true) }} >Edit Profile</button>
                             </div>
                             <div className="bio-strip">short bio</div>
                             <div className="placeholder-grid">
