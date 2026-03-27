@@ -23,7 +23,7 @@ const RaiseQuery = () => {
             <aside className="sidebar">
                 <h1 className="logo">MARG</h1>
                 <nav className="nav-menu">
-                    <div className="nav-item">
+                    <div className="nav-item" onClick={()=>{ navigate("/dashboard") }}>
                         <Home size={20} /> <span>HOME</span>
                     </div>
                     <div className="nav-item active">

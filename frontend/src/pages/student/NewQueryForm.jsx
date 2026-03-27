@@ -13,28 +13,6 @@ import {
 const NewQueryForm = () => {
     return (
         <div className="query-form-page">
-            {/* Sidebar - Consistent with previous pages */}
-            <aside className="sidebar">
-                <h1 className="logo">MARG</h1>
-                <nav className="nav-menu">
-                    <div className="nav-item">
-                        <Home size={20} /> <span>HOME</span>
-                    </div>
-                    <div className="nav-item active">
-                        <FileText size={20} /> <span>Raise a Querry</span>
-                    </div>
-                    <div className="nav-item">
-                        <MessageSquare size={20} /> <span>Chat</span>
-                    </div>
-                    <div className="nav-item">
-                        <Users size={20} /> <span>Community</span>
-                    </div>
-                    <div className="nav-item settings">
-                        <Settings size={20} /> <span>Settings</span>
-                    </div>
-                </nav>
-            </aside>
-
             {/* Main Content */}
             <main className="main-content">
                 <header className="header-row">
